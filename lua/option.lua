@@ -1,5 +1,5 @@
-vim.g.mapleader = " "
-vim.b.mapleader = " "
+vim.opt.mapleader = " "
+-- vim.b.mapleader = " "
 local options = {
 	backup = false, -- creates a backup file
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
@@ -36,3 +36,4 @@ local options = {
 	sidescrolloff = 8,
 	guifont = "monospace:h17", -- the font used in graphical neovim applications
 }
+vim.opt = options

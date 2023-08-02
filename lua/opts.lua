@@ -22,7 +22,7 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 vim.opt.shortmess:append("c")
 vim.o.showmode = false
 vim.o.mouse = "a"
-vim.o.autochdir = true
+vim.o.autochdir = false
 vim.o.showtabline = 2
 vim.o.clipboard = "unnamedplus"
 vim.o.laststatus = 2
@@ -38,6 +38,7 @@ vim.wo.signcolumn = "yes"
 vim.wo.numberwidth = 4
 vim.wo.wrap = false
 vim.wo.cursorline = true
+vim.wo.cursorcolumn = true
 
 -- local buffer options
 
@@ -58,19 +59,9 @@ vim.bo.fileencoding = "utf-8"
 vim.bo.autoindent = true
 -- vim.o.smartindent = true
 vim.bo.smartindent = true
--- " Automatically deletes all trailing whitespace and newlines at end of file on save.
--- " Disables automatic commenting on newline:
--- au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
--- vim.cmd([[
--- autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
--- autocmd BufWritePre * %s/\s\+$//e
--- autocmd BufWritePre * %s/\n\+\%$//e
--- autocmd BufWritePre *.[ch] %s/\%$/\r/e
--- ]])
-
 -- vim.cmd("language en_US.utf-8")
--- vim.wo.list = true
--- vim.o.listchars = "precedes:,extends:"
+vim.wo.list = false
+vim.o.listchars = "precedes:,extends:"
 
 vim.g.markdown_fenced_languages = { "sh", "vim" }
 

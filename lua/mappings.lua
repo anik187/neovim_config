@@ -1,6 +1,6 @@
 local api = vim.api
 
-opt = { noremap = true, silent = true }
+local opt = { noremap = true, silent = true }
 
 api.nvim_set_keymap("n", "zz", ":q!<CR>", opt)
 

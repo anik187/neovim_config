@@ -38,50 +38,66 @@ packer.init({
 return packer.startup(function()
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
+	use("nvim-lua/plenary.nvim")
 	-- icons secton
 	use("ryanoasis/vim-devicons")
-	use("kyazdani42/nvim-web-devicons")
+	use("nvim-tree/nvim-web-devicons")
 	-- statusline section
-	use("windwp/windline.nvim")
+	-- use("windwp/windline.nvim")
 	use({
 		"hoob3rt/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 	use("lukas-reineke/indent-blankline.nvim")
+
 	-- theme section
-	use({ "dracula/vim", as = "dracula" })
-	use("lunarvim/darkplus.nvim")
-	use("navarasu/onedark.nvim")
-	use("rafamadriz/neon")
-	use("yashguptaz/calvera-dark.nvim")
-	use("folke/tokyonight.nvim")
-	use({
-		"rose-pine/neovim",
-		as = "rose-pine",
-		tag = "v0.1.0", -- Optional tag release
-	})
-	use("romgrk/doom-one.vim")
+	use("morhetz/gruvbox")
+	use("bluz71/vim-nightfly-guicolors")
+
 	use("windwp/nvim-ts-autotag")
+	use("windwp/nvim-autopairs")
 	use("p00f/nvim-ts-rainbow")
-	use("norcalli/nvim-colorizer.lua")
+	use("NvChad/nvim-colorizer.lua")
 	-- file explorer
 	use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
 
 	-- cmp plugins
-	use("hrsh7th/nvim-cmp") -- The completion plugin
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"roobert/tailwindcss-colorizer-cmp.nvim",
+			config = function()
+				require("tailwindcss-colorizer-cmp").setup({
+					color_square_width = 2,
+				})
+			end,
+		},
+	}) -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
+
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
+	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
+	use("rafamadriz/friendly-snippets") -- useful snippets
+
 	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-	-- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+
+	-- managing & installing lsp servers, linters & formatters
+	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
+	use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+	use("neovim/nvim-lspconfig") -- enable LSP
+	use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+
+	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use("jayp0521/mason-null-ls.nvim") -- bridges gap b/w mason & null-ls
+
 	use("tami5/lspsaga.nvim")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use({
@@ -93,10 +109,11 @@ return packer.startup(function()
 		requires = { "nvim-lua/plenary.nvim" },
 		-- tag = 'release' -- To use the latest release
 	})
+
 	use("folke/which-key.nvim")
 	use("terrortylor/nvim-comment")
 	use("numtostr/FTerm.nvim")
-	use("glepnir/dashboard-nvim")
+	-- use("glepnir/dashboard-nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
