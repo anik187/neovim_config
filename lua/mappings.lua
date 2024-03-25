@@ -1,52 +1,36 @@
-local api = vim.api
+local keymap = vim.keymap
 
 local opt = { noremap = true, silent = true }
 
-api.nvim_set_keymap("n", "zz", ":q!<CR>", opt)
-
-vim.cmd([[
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" Better nav for omnicomplete
-inoremap <expr> <c-j> ("\<C-n>")
-inoremap <expr> <c-k> ("\<C-p>")
-
-" Use alt + jkl; to resize windows
-nnoremap <M-k>    :resize -2<CR>
-nnoremap <M-l>    :resize +2<CR>
-nnoremap <M-j>    :vertical resize -2<CR>
-nnoremap <M-;>    :vertical resize +2<CR>
-
-]])
+keymap.set("n", "zz", ":q!<CR>", opt)
 
 -- mapping hjkl to jkl;
-api.nvim_set_keymap("n", "j", "h", opt)
-api.nvim_set_keymap("n", "k", "j", opt)
-api.nvim_set_keymap("n", "l", "k", opt)
-api.nvim_set_keymap("n", ";", "l", opt)
-api.nvim_set_keymap("v", "j", "h", opt)
-api.nvim_set_keymap("v", "k", "j", opt)
-api.nvim_set_keymap("v", "l", "k", opt)
-api.nvim_set_keymap("v", ";", "l", opt)
+keymap.set("n", "j", "h", opt)
+keymap.set("n", "k", "j", opt)
+keymap.set("n", "l", "k", opt)
+keymap.set("n", ";", "l", opt)
+keymap.set("v", "j", "h", opt)
+keymap.set("v", "k", "j", opt)
+keymap.set("v", "l", "k", opt)
+keymap.set("v", ";", "l", opt)
 
 -- mapping jk kj to escape
-api.nvim_set_keymap("i", "jk", "<Esc>", opt)
-api.nvim_set_keymap("i", "kj", "<Esc>", opt)
+keymap.set("i", "jk", "<Esc>", opt)
+keymap.set("i", "kj", "<Esc>", opt)
 -- Better tabbing
-api.nvim_set_keymap("v", "<", "<gv", opt)
-api.nvim_set_keymap("v", ">", ">gv", opt)
-
--- tab navigation
-api.nvim_set_keymap("n", "<TAB>", ":bnext<CR>", { noremap = false, silent = true })
-api.nvim_set_keymap("n", "<S-TAB>", ":bprevious<CR>", { noremap = false, silent = true })
+keymap.set("v", "<", "<gv", opt)
+keymap.set("v", ">", ">gv", opt)
 
 -- Better window navigation
-api.nvim_set_keymap("n", "<C-j>", "<C-w>h", opt)
-api.nvim_set_keymap("n", "<C-k>", "<C-w>j", opt)
-api.nvim_set_keymap("n", "<C-l>", "<C-w>k", opt)
-api.nvim_set_keymap("n", "<C-h>", "<C-w>l", opt)
-api.nvim_set_keymap("n", "<C-c>", "<C-w>c", opt)
+keymap.set("n", "<C-j>", "<C-w>h", opt)
+keymap.set("n", "<C-k>", "<C-w>j", opt)
+keymap.set("n", "<C-l>", "<C-w>k", opt)
+keymap.set("n", "<C-h>", "<C-w>l", opt)
+keymap.set("n", "<C-c>", "<C-w>c", opt)
 
--- File Explorer
-api.nvim_set_keymap("n", "<F1>", ":NvimTreeToggle<CR>", opt)
+-- Better tab navigation
+keymap.set("n", "<TAB>", ":tabnext<cr>", opt)
+keymap.set("n", "<S-TAB>", ":tabprevious<cr>", opt)
+
+keymap.set("n", "<leader>h", ":noh<CR>", opt)
+keymap.set("n", "<leader>w", "<cmd>w<cr>", opt)

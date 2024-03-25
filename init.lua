@@ -1,30 +1,17 @@
--- defaults --
-require("opts")
+---@diagnostic disable: undefined-global
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("vim-options")
 require("mappings")
-require("plugins")
-
-require("anik.colorizer-setup")
-require("anik.tailwindcmp-setup")
--- statusline
-require("anik.statusline-setup")
-require("anik.bufferline-setup")
-require("anik.indentline")
-require("anik.autopairs-setup")
-require("anik.nvimcomment-setup")
-require("anik.dashboard-setup")
-require("anik.nvimtree-setup(yt)")
-require("anik.floatterm-setup")
-require("anik.gitsigns-setup")
--- lsp --
-require("anik.cmp-setup")
-require("anik.lsp-mason.lspconfig")
-require("anik.lsp-mason.mason")
-require("anik.lsp-mason.null-ls")
-require("anik.lspsaga-setup")
-require("anik.treesitter-setup")
-require("anik.project")
-require("anik.telescope-setup")
-require("anik.whichkey-setup")
-
-vim.cmd("colo gruvbox")
-vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
+require("lazy").setup("plugins")
