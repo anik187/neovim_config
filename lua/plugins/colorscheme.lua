@@ -1,13 +1,1 @@
-return {
-
-	"folke/tokyonight.nvim",
-	lazy = false,
-	priority = 1000,
-	name = "tokyonight",
-	config = function()
-		require("tokyonight").setup({
-			style = "night",
-		})
-		vim.cmd.colorscheme("tokyonight")
-	end,
-}
+return { "catppuccin/nvim", name = "catppuccin", priority = 1000 }

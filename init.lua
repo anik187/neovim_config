@@ -11,7 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
-require("vim-options")
-require("mappings")
+require("options")
+require("keymaps")
 require("lazy").setup("plugins")
+
+vim.cmd.colorscheme("gruvbox")

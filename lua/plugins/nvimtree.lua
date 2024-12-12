@@ -78,7 +78,7 @@ return {
 			view = {
 				-- allow_resize = false,
 				side = "left",
-				width = 28,
+				width = 25,
 			},
 		})
 		-- File Explorer
