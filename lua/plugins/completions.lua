@@ -129,7 +129,6 @@ function M.config()
 				-- 	vim_item.kind = icons.misc.Robot
 				-- 	vim_item.kind_hl_group = "CmpItemKindTabnine"
 				-- end
-
 				return vim_item
 			end,
 		},

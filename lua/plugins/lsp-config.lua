@@ -16,6 +16,7 @@ return {
 				"html",
 				"pyright",
 				"tailwindcss",
+				"gopls",
 			},
 			auto_install = true,
 		},
@@ -36,7 +37,7 @@ return {
 				-- keybind options
 				local opts = { noremap = true, silent = true, buffer = bufnr }
 				if client.supports_method("textDocument/inlayHint") then
-					vim.lsp.inlay_hint.enable(bufnr, true)
+					vim.lsp.inlay_hint.enable(true)
 				end
 
 				-- set keybinds
@@ -55,40 +56,23 @@ return {
 			end
 			local lspconfig = require("lspconfig")
 			local servers = {
-				lua_ls = {
-					settings = {
-						Lua = {
-							runtime = { version = "LuaJIT" },
-							workspace = {
-								checkThirdParty = false,
-								-- Tells lua_ls where to find all the Lua files that you have loaded
-								-- for your neovim configuration.
-						    --library = {
-						    --	"${3rd}/luv/library",
-						    --	unpack(vim.api.nvim_get_runtime_file("", true)),
-						    --},
-						  	-- If lua_ls is really slow on your computer, you can try this instead:
-								 library = { vim.env.VIMRUNTIME },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							 diagnostics = { globals = {"vim"},disable = { 'missing-fields' } },
-						},
-					},
-				},
-
+				"lua_ls",
+				"gopls",
 				"html",
 				"cssls",
 				"tailwindcss",
 				"pyright",
 			}
 			for _, server in ipairs(servers) do
-				lspconfig[server].setup({
+				local opts = {
 					on_attach = on_attach,
 					capabilities = capabilities,
-				})
+				}
+				local require_ok, settings = pcall(require, "plugins.lspsettings." .. server)
+				if require_ok then
+					opts = vim.tbl_deep_extend("force", settings, opts)
+				end
+				lspconfig[server].setup(opts)
 			end
 		end,
 	},

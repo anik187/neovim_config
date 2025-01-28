@@ -15,4 +15,4 @@ require("options")
 require("keymaps")
 require("lazy").setup("plugins")
 
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("catppuccin")
