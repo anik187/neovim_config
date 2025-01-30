@@ -22,7 +22,6 @@ return {
 				formatting.black, -- python formatter
 				formatting.isort, -- python formatter
 				-- formatting.yamlfmt, -- yaml file formatter
-				-- formatting.rustfmt, -- rust formatter
 				-- formatting.clang - format, -- c/cpp formatter
 				-- diagnostics.eslint_d.with({ -- js/ts linter
 				-- 	-- only enable eslint if root has .eslintrc.js (not in youtube nvim video)

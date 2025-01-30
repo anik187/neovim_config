@@ -23,6 +23,7 @@ opt.completeopt = "menuone,noinsert,noselect"
 opt.showmode = false
 opt.mouse = "a"
 opt.autochdir = false
+-- opt.autoread = true -- special change
 opt.showtabline = 1
 opt.clipboard = "unnamedplus"
 opt.laststatus = 2

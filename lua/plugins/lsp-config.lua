@@ -16,7 +16,7 @@ return {
 				"html",
 				"pyright",
 				"tailwindcss",
-				"gopls",
+				"rust_analyzer",
 			},
 			auto_install = true,
 		},
@@ -57,11 +57,11 @@ return {
 			local lspconfig = require("lspconfig")
 			local servers = {
 				"lua_ls",
-				"gopls",
 				"html",
 				"cssls",
 				"tailwindcss",
 				"pyright",
+				"rust_analyzer",
 			}
 			for _, server in ipairs(servers) do
 				local opts = {
