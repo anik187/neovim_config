@@ -16,4 +16,4 @@ require("keymaps")
 require("rust-settings")
 require("lazy").setup("plugins")
 
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("andromeda")

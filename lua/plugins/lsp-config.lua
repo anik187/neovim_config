@@ -14,6 +14,8 @@ return {
 				"lua_ls",
 				"cssls",
 				"html",
+				"ts_ls",
+				"emmet_ls",
 				"pyright",
 				"tailwindcss",
 				"rust_analyzer",
@@ -24,7 +26,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
-		diagnostics = {},
+		diagnostics = { virtual_text = true },
 		config = function()
 			local icons = require("icons")
 			local signs = { Error = " ", Warn = " ", Hint = icons.diagnostics.BoldHint, Info = " " }
@@ -46,6 +48,9 @@ return {
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- see definition and make edits in window
 				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts) -- go to implementation
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions
+				vim.keymap.set("n", "<leader>d", function()
+					vim.diagnostic.open_float({ border = "rounded" })
+				end, opts)
 
 				-- typescript specific keymaps (e.g. rename file and update imports)
 				--if client.name == "tsserver" then
@@ -59,7 +64,9 @@ return {
 				"lua_ls",
 				"html",
 				"cssls",
+				"emmet_ls",
 				"tailwindcss",
+				"ts_ls",
 				"pyright",
 				"rust_analyzer",
 			}

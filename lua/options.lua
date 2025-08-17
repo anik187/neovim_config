@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 
 -- global options
 local opt = vim.opt
+vim.diagnostic.get()
 
 opt.ruler = false
 opt.splitright = true

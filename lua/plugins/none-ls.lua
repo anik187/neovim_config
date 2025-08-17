@@ -16,7 +16,7 @@ return {
 				--  to disable file types use
 				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.prettier.with({
-					extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote", "--tab-width 2" },
+					extra_args = { "--no-semi", "--double-quote", "--jsx-double-quote", "--tab-width 4" },
 				}),
 				formatting.stylua, -- lua formatter
 				formatting.black, -- python formatter
