@@ -28,6 +28,7 @@ vim.o.clipboard = "unnamedplus"
 vim.o.laststatus = 2
 vim.o.pumheight = 10
 vim.o.cmdheight = 1
+vim.o.winborder = "rounded"
 
 -- local window options
 
@@ -66,3 +67,11 @@ vim.o.listchars = "precedes:,extends:"
 vim.g.markdown_fenced_languages = { "sh", "vim" }
 
 vim.g.termbufm_direction_cmd = "new"
+
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "highlight when yanking (copying) text",
+  callback = function()
+    vim.hl.hl_op({timeout=300})
+  end,
+})

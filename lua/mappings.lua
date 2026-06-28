@@ -48,5 +48,6 @@ api.nvim_set_keymap("n", "<C-l>", "<C-w>k", opt)
 api.nvim_set_keymap("n", "<C-h>", "<C-w>l", opt)
 api.nvim_set_keymap("n", "<C-c>", "<C-w>c", opt)
 
+api.nvim_set_keymap("n", "<leader>h", ":nohl<CR>", opt)
 -- File Explorer
-api.nvim_set_keymap("n", "<F1>", ":NvimTreeToggle<CR>", opt)
+-- api.nvim_set_keymap("n", "<F1>", ":NvimTreeToggle<CR>", opt)
