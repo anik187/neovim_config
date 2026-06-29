@@ -13,6 +13,10 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
 	{ src = "https://github.com/terrortylor/nvim-comment" },
+	{ src = "https://github.com/nvim-mini/mini.icons" },
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+	{ src = "https://github.com/nvim-telescope/telescope.nvim" },
+	{ src = "https://github.com/brenoprata10/nvim-highlight-colors" },
 })
 
 require("tree-sitter-manager").setup({
@@ -31,6 +35,7 @@ require("mason").setup({
 })
 
 require("gruvbox").setup()
+require("mini.icons").setup()
 vim.cmd.colorscheme("gruvbox")
 
 vim.g.loaded_netrw = 1
@@ -47,6 +52,13 @@ comment.setup({
 })
 vim.keymap.set("n", "<leader>/", "<cmd>CommentToggle<cr>", { noremap = true, silent = true })
 vim.keymap.set("v", "<leader>/", ":'<,'>CommentToggle<cr>", { noremap = true, silent = true })
+
+require("nvim-highlight-colors").setup({})
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 
 --- lsp , autocomplete setup ---
 
